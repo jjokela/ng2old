@@ -1,0 +1,42 @@
+﻿.task-list div {
+    margin: 20px;
+}
+
+.task-list ul {
+    list-style-type: none;
+    width: 500px;
+}
+
+.task-list h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.task-list li img {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.task-list li p, .task-list li a {
+    /*font: 200 12px/1.5 Georgia, Times New Roman, serif;*/
+}
+
+.task-list li {
+    padding: 10px;
+    overflow: auto;
+}
+
+    .task-list li:hover {
+        background: #eee;
+        cursor: pointer;
+    }
+
+
+    .task-list li a:hover, .task-list li a:visited, .task-list li a:link, .task-list li a:active {
+        text-decoration: none;
+    }
+
+.task-list-add {
+    padding-left: 50px;
+}

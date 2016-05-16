@@ -1,0 +1,42 @@
+﻿.project-list div {
+    margin: 20px;
+}
+
+.project-list ul {
+    list-style-type: none;
+    width: 500px;
+}
+
+.project-list h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.project-list li img {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.project-list li p, .project-list li a {
+    /*font: 200 12px/1.5 Georgia, Times New Roman, serif;*/
+}
+
+.project-list li {
+    padding: 10px;
+    overflow: auto;
+}
+
+    .project-list li:hover {
+        background: #eee;
+        cursor: pointer;
+    }
+
+
+    .project-list li a:hover, .project-list li a:visited, .project-list li a:link, .project-list li a:active {
+        text-decoration: none;
+    }
+
+.project-list-add {
+    padding-left: 50px;
+}

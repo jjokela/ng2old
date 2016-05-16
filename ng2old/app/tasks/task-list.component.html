@@ -1,0 +1,14 @@
+﻿<article class="template animated slideInRight">
+    <h4>My Tasks</h4>
+    <div class="task-list-add">
+        <filter-text (changed)="filterChanged($event)"></filter-text>
+        <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="addNew()">Add New Task</button>
+    </div>
+    <ul class="task-list">
+        <li *ngFor="let task of filteredTasks | sortTasks" (click)="gotoDetail(task)">
+            <img src="http://lorempixum.com/100/100/nature/{{ task.id }}">
+            <h3>{{ task.name }}</h3>
+            <p>{{ task.description }}</p>
+        </li>
+    </ul>
+</article>

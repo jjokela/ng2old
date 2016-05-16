@@ -1,0 +1,14 @@
+﻿<article class="template animated slideInRight">
+    <h4>My Projects</h4>
+    <div class="project-list-add">
+        <filter-text (changed)="filterChanged($event)"></filter-text>
+        <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="addNew()">Add New Project</button>
+    </div>
+    <ul class="project-list">
+        <li *ngFor="let project of filteredProjects | sortProjects" (click)="gotoDetail(project)">
+            <img src="http://lorempixum.com/100/100/nature/{{ project.id }}">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+        </li>
+    </ul>
+</article>
