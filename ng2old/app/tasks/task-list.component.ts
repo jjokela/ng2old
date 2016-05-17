@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
@@ -7,6 +7,7 @@ import { FilterService, FilterTextComponent} from '../shared/shared';
 import { Task } from './task.model';
 import { TaskService } from './task.service';
 import { SortTasksPipe } from './sort-tasks.pipe';
+import { Project } from '../projects/project.model';
 
 @Component({
     selector: 'app-tasks',
@@ -20,10 +21,11 @@ import { SortTasksPipe } from './sort-tasks.pipe';
     providers: [FilterService]
 })
 
-export class TaskListComponent implements OnActivate {
+export class TaskListComponent implements OnActivate, OnInit {
     filteredTasks = this.tasks;
     tasks: Task[];
 
+    @Input() project: Project;
     @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;
 
     constructor(
@@ -33,6 +35,11 @@ export class TaskListComponent implements OnActivate {
     ) { }
 
     routerOnActivate() {
+        console.log(`routerOnActivate`);
+    }
+
+    ngOnInit() {
+        console.log(`onInit`);
         this.getTasks();
     }
 

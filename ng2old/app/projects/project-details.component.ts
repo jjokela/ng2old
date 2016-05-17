@@ -1,21 +1,23 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { CanDeactivate, OnActivate, Router, RouteSegment } from '@angular/router';
 
 import { EntityService, ModalService, ToastService } from '../shared/shared';
 
 import { Project } from './project.model';
 import { ProjectService } from './project.service';
+import { TaskListComponent } from '../tasks/task-list.component';
 
 @Component({
     selector: 'app-project',
     templateUrl: 'app/projects/project-details.component.html',
-    styles: ['.mdl-textfield__label {top: 0;} textarea { font-family: Helvetica;}']
+    styles: ['.mdl-textfield__label {top: 0;} textarea { font-family: Helvetica;}'],
+    directives: [TaskListComponent]
 })
 export class ProjectDetailsComponent implements OnActivate, CanDeactivate {
 
     editProject: Project = <Project>{};
     @Input() project: Project;
-    
+
     constructor(
         private entityService: EntityService,
         private modalService: ModalService,
