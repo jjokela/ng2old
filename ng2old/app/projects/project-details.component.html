@@ -9,19 +9,9 @@
             <label class="mdl-textfield__label" for="sidetext">Description</label>
             <textarea type="text" id="sidetext" class="mdl-textfield__input" [(ngModel)]="editProject.description"></textarea>
         </div>
+
         <app-tasks></app-tasks>
-        <!-- näytä jos ei olla addnew modessa -->
-        <!--<div class="subprojects">
-            <h3>subprojects</h3>
-            <ul>
-                <li>subutex 1</li>
-                <li>subutex 2</li>
-                <li>subutex 3</li>
-            </ul>
-            <div>
-                <button>Add New Subproject</button>
-            </div>
-        </div>-->
+
         <div>
             <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="save()">
                 Save

@@ -52,8 +52,8 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
 
     delete() {
         let msg = `Do you want to delete ${this.task.name}`;
-        this.modalService.activate(msg).then(responseOK => {
-            if (responseOK) {
+        this.modalService.activate(msg).then(responseOk => {
+            if (responseOk) {
                 this.cancel(false);
                 this.service.deleteTask(this.task)
                     .subscribe(() => {
@@ -78,7 +78,7 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
     }
 
     save() {
-        let task = this.task = this.entityService.merge(this.task, this.editTask);
+        let task: Task = this.task = this.entityService.merge(this.task, this.editTask);
 
         if (task.id == null) {
             this.service.addTask(task)

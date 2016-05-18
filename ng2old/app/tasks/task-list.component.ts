@@ -22,8 +22,8 @@ import { Project } from '../projects/project.model';
 })
 
 export class TaskListComponent implements OnActivate, OnInit {
-    filteredTasks = this.tasks;
     tasks: Task[];
+    filteredTasks = this.tasks;
 
     @Input() project: Project;
     @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;

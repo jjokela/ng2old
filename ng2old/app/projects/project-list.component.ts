@@ -21,8 +21,8 @@ import { SortProjectsPipe } from './sort-projects.pipe';
 })
 
 export class ProjectListComponent implements OnActivate {
-    filteredProjects = this.projects;
     projects: Project[];
+    filteredProjects = this.projects;
 
     @ViewChild(FilterTextComponent) filterComponent: FilterTextComponent;
 

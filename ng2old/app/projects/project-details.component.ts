@@ -54,8 +54,8 @@ export class ProjectDetailsComponent implements OnActivate, CanDeactivate {
 
     delete() {
         let msg = `Do you want to delete ${this.project.name}`;
-        this.modalService.activate(msg).then(responseOK => {
-            if (responseOK) {
+        this.modalService.activate(msg).then(responseOk => {
+            if (responseOk) {
                 this.cancel(false);
                 this.service.deleteProject(this.project)
                     .subscribe(() => {
@@ -80,7 +80,7 @@ export class ProjectDetailsComponent implements OnActivate, CanDeactivate {
     }
 
     save() {
-        let project = this.project = this.entityService.merge(this.project, this.editProject);
+        let project: Project = this.project = this.entityService.merge(this.project, this.editProject);
 
         if (project.id == null) {
             this.service.addProject(project)
