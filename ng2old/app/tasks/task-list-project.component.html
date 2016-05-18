@@ -1,0 +1,19 @@
+﻿<article class="task-list-project template animated slideInRight">
+    <ul class="mdl-list" *ngIf="tasks.length > 0">
+        <li class="mdl-list__item mdl-list__item--two-line" *ngFor="let task of tasks | sortTasks" (click)="gotoDetail(task)">
+            <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">label_outline</i>
+                <span>{{ task.name }}</span>
+                <span class="mdl-list__item-sub-title">{{ task.description }}</span>
+            </span>
+        </li>
+    </ul>
+    <div *ngIf="tasks.length === 0">
+        <span>No Tasks Found.</span>
+    </div>
+    <div class="task-list-project-add">
+        <filter-text (changed)="filterChanged($event)"></filter-text>
+        <button class="mdl-button mdl-js-button mdl-button--primary" (click)="addNew()">Add a New Task</button>
+    </div>
+</article>
+

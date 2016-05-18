@@ -81,6 +81,8 @@
     <Content Include="app\shared\toast\toast.component.css" />
     <Content Include="app\shared\toast\toast.component.html" />
     <Content Include="app\tasks\task-details.component.html" />
+    <Content Include="app\tasks\task-list-project.component.css" />
+    <Content Include="app\tasks\task-list-project.component.html" />
     <Content Include="app\tasks\task-list.component.css" />
     <Content Include="app\tasks\task-list.component.html" />
     <Content Include="assets\animate.css" />
@@ -137,6 +139,7 @@
     <TypeScriptCompile Include="app\shared\toast\toast.ts" />
     <TypeScriptCompile Include="app\tasks\sort-tasks.pipe.ts" />
     <TypeScriptCompile Include="app\tasks\task-details.component.ts" />
+    <TypeScriptCompile Include="app\tasks\task-list-project.component.ts" />
     <TypeScriptCompile Include="app\tasks\task-list.component.ts" />
     <TypeScriptCompile Include="app\tasks\task.model.ts" />
     <TypeScriptCompile Include="app\tasks\tasks.component.ts" />

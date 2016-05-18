@@ -50,6 +50,13 @@ export class TaskService {
             .finally(() => this.spinnerService.hide());
     }
 
+    getTasksByProject(id: number) {
+        return this.getTasks()
+            .map((tasks: Task[]) => tasks.filter((task: Task) => task.projectId == id))
+            .do((data: any) => console.log('done getting Task with project id: ' + id + ' count: ' + data.length))
+            .catch(this.exceptionService.catchBadResponse);
+    }
+
     updateTask(task: Task) {
         let body = JSON.stringify(task);
         this.spinnerService.show('Saving...');

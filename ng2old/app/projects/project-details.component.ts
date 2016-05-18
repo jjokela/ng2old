@@ -5,13 +5,13 @@ import { EntityService, ModalService, ToastService } from '../shared/shared';
 
 import { Project } from './project.model';
 import { ProjectService } from './project.service';
-import { TaskListComponent } from '../tasks/task-list.component';
+import { TaskListProjectComponent } from '../tasks/task-list-project.component';
 
 @Component({
     selector: 'app-project',
     templateUrl: 'app/projects/project-details.component.html',
     styles: ['.mdl-textfield__label {top: 0;} textarea { font-family: Helvetica;}'],
-    directives: [TaskListComponent]
+    directives: [TaskListProjectComponent]
 })
 export class ProjectDetailsComponent implements OnActivate, CanDeactivate {
 

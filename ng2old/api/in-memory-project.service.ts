@@ -56,27 +56,32 @@
             {
                 "id": 1,
                 "name": "Create project plan",
-                "description": "Create an initial project plan"
+                "description": "Create an initial project plan",
+                "projectId": 1
             },
             {
                 "id": 2,
                 "name": "Assign resources",
-                "description": "Assign the needed resources for the project"
+                "description": "Assign the needed resources for the project",
+                "projectId": 1
             },
             {
                 "id": 3,
                 "name": "Create UI mockup",
-                "description": "We need a UI mockup to be shown to stakeholders"
+                "description": "We need a UI mockup to be shown to stakeholders",
+                "projectId": 1
             },
             {
                 "id": 4,
                 "name": "Architecture design",
-                "description": "Create a high level architecture design"
+                "description": "Create a high level architecture design",
+                "projectId": 1
             },
             {
                 "id": 5,
                 "name": "Create database",
-                "description": "Create database schema and scripts"
+                "description": "Create database schema and scripts",
+                "projectId": 1
             }
         ];
         return { projects, tasks };

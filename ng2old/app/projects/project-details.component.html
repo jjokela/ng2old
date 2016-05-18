@@ -10,7 +10,8 @@
             <textarea type="text" id="sidetext" class="mdl-textfield__input" [(ngModel)]="editProject.description"></textarea>
         </div>
 
-        <app-tasks></app-tasks>
+        <h4>List of Tasks</h4>
+        <app-tasks-project [project]="project"></app-tasks-project>
 
         <div>
             <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="save()">
