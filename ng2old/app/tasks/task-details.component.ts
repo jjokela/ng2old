@@ -14,6 +14,7 @@ import { TaskService } from './task.service';
 export class TaskDetailsComponent implements OnActivate, CanDeactivate {
 
     editTask: Task = <Task>{};
+    projectId: number;
     @Input() task: Task;
 
     constructor(
@@ -32,7 +33,8 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
 
     routerOnActivate(curr: RouteSegment) {
         let id = +curr.getParam('id');
-
+        this.projectId = +curr.getParam('projectId');
+        console.log('projid: ' + this.projectId);
         if (this.isAddMode(id)) {
             this.task = <Task>{ name: '', description: '' };
             this.editTask = this.entityService.clone(this.task);
@@ -72,6 +74,11 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
         return this.entityService.propertiesDiffer(this.task, this.editTask);
     }
 
+    private gotoProject() {
+        let route = ['/projects', this.projectId];
+        this.router.navigate(route);
+    }
+
     private gotoTasks() {
         let route = ['/tasks'];
         this.router.navigate(route);
@@ -85,7 +92,11 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
                 .subscribe((task: Task) => {
                     this.setEditTask(task);
                     this.toastService.activate(`Successfully added ${task.name}`);
-                    this.gotoTasks();
+                    if (this.projectId) {
+                        this.gotoProject();
+                    } else {
+                        this.gotoTasks();
+                    }
                 });
             return;
         }

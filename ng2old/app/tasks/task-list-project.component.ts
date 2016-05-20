@@ -37,14 +37,12 @@ export class TaskListProjectComponent implements OnActivate, OnInit {
     }
 
     addNew() {
-        let link = ['/tasks', 'new'];
+        let link = ['/tasks', 'new', { projectId: this.project.id }];
         this.router.navigate(link);
     }
 
     getTasks() {
         this.tasks = [];
-
-        //if (!this.project) { return; }
 
         this.taskService.getTasksByProject(this.project.id)
             .subscribe(
@@ -55,7 +53,7 @@ export class TaskListProjectComponent implements OnActivate, OnInit {
     }
 
     gotoDetail(task: Task) {
-        let link = ['/tasks', task.id];
+        let link = ['/tasks', task.id, { projectId: this.project.id }];
         this.router.navigate(link);
     }
 }

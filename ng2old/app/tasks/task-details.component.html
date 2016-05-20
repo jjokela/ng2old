@@ -20,6 +20,11 @@
             </button>
             &nbsp;
             <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="delete()" [class.not-displayed]="isAddMode(editTask.id)">Delete</button>
+            &nbsp;
+            <button class="mdl-button mdl-js-button mdl-button--primary" [class.not-displayed]="!projectId" (click)="gotoProject()">
+                Back to Project
+            </button>
+
         </div>
     </div>
 </article>
