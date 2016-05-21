@@ -1,4 +1,4 @@
-﻿import { Component, Input, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, Input, AfterViewChecked, OnInit, ViewChild } from '@angular/core';
 import { CanDeactivate, OnActivate, Router, RouteSegment } from '@angular/router';
 
 import { EntityService, ModalService, ToastService } from '../shared/shared';
@@ -6,14 +6,15 @@ import { EntityService, ModalService, ToastService } from '../shared/shared';
 import { Project } from './project.model';
 import { ProjectService } from './project.service';
 import { TaskListProjectComponent } from '../tasks/task-list-project.component';
+declare var componentHandler: any;
 
 @Component({
     selector: 'app-project',
     templateUrl: 'app/projects/project-details.component.html',
-    styles: ['.mdl-textfield__label {top: 0;} textarea { font-family: Helvetica;}'],
+    styles: [],
     directives: [TaskListProjectComponent]
 })
-export class ProjectDetailsComponent implements OnActivate, CanDeactivate {
+export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {
 
     editProject: Project = <Project>{};
     @Input() project: Project;
@@ -25,6 +26,11 @@ export class ProjectDetailsComponent implements OnActivate, CanDeactivate {
         private service: ProjectService,
         private toastService: ToastService
     ) { }
+
+    ngAfterViewChecked() {
+        // viewChild is set after the view has been initialized
+      componentHandler.upgradeAllRegistered();
+    }
 
     routerCanDeactivate(): any {
         return !this.project ||

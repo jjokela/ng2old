@@ -9,21 +9,18 @@
             <label class="mdl-textfield__label" for="sidetext">Description</label>
             <textarea type="text" id="sidetext" class="mdl-textfield__input" [(ngModel)]="editProject.description"></textarea>
         </div>
-
-        <h4>List of Tasks</h4>
-        <app-tasks-project [project]="project"></app-tasks-project>
-
         <div>
-            <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="save()">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="save()">
                 Save
             </button>
             &nbsp;
-            <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect
-            " (click)="cancel()" [class.not-displayed]="isAddMode(editProject.id)">
+            <button class="mdl-button mdl-js-button mdl-button--raised" (click)="cancel()" [class.not-displayed]="isAddMode(editProject.id)">
                 Cancel
             </button>
             &nbsp;
-            <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="delete()" [class.not-displayed]="isAddMode(editProject.id)">Delete</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" (click)="delete()" [class.not-displayed]="isAddMode(editProject.id)">Delete</button>
         </div>
+        <h4>List of Tasks</h4>
+        <app-tasks-project [project]="project"></app-tasks-project>
     </div>
 </article>

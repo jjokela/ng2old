@@ -1,17 +1,18 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component, Input, AfterViewChecked, OnInit } from '@angular/core';
 import { CanDeactivate, OnActivate, Router, RouteSegment } from '@angular/router';
 
 import { EntityService, ModalService, ToastService } from '../shared/shared';
 
 import { Task } from './task.model';
 import { TaskService } from './task.service';
+declare var componentHandler: any;
 
 @Component({
     selector: 'app-task',
     templateUrl: 'app/tasks/task-details.component.html',
-    styles: ['.mdl-textfield__label {top: 0;} textarea { font-family: Helvetica;}']
+    styles: []
 })
-export class TaskDetailsComponent implements OnActivate, CanDeactivate {
+export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {
 
     editTask: Task = <Task>{};
     projectId: number;
@@ -25,6 +26,11 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
         private toastService: ToastService
     ) { }
 
+    ngAfterViewChecked() {
+        // viewChild is set after the view has been initialized
+        componentHandler.upgradeAllRegistered();
+    }
+
     routerCanDeactivate(): any {
         return !this.task ||
             !this.isDirty() ||
@@ -36,7 +42,7 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
         this.projectId = +curr.getParam('projectId');
         console.log('projid: ' + this.projectId);
         if (this.isAddMode(id)) {
-            this.task = <Task>{ name: '', description: '' };
+            this.task = <Task>{ name: '', description: '', projectId: this.projectId };
             this.editTask = this.entityService.clone(this.task);
             return;
         }
@@ -60,7 +66,11 @@ export class TaskDetailsComponent implements OnActivate, CanDeactivate {
                 this.service.deleteTask(this.task)
                     .subscribe(() => {
                         this.toastService.activate(`Deleted ${this.task.name}`);
-                        this.gotoTasks();
+                        if (this.projectId) {
+                            this.gotoProject();
+                        } else {
+                            this.gotoTasks();
+                        }
                     });
             }
         });

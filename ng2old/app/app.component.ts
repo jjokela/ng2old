@@ -1,4 +1,4 @@
-import { Component, OnInit, provide } from '@angular/core';
+import { Component, AfterViewChecked, OnInit, provide } from '@angular/core';
 import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
 import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { InMemoryBackendConfig, InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api/core';
@@ -9,6 +9,7 @@ import { EntityService, ExceptionService, FilterService, FilterTextComponent, Mo
 import { InMemoryProjectService } from '../api/in-memory-project.service';
 import { ProjectsComponent, ProjectService } from './projects/projects';
 import { TasksComponent, TaskService } from './tasks/tasks';
+declare var componentHandler: any;
 
 @Component({
     selector: 'my-app',
@@ -43,8 +44,13 @@ import { TasksComponent, TaskService } from './tasks/tasks';
     { path: '/tasks', component: TasksComponent },
     { path: '*', component: ProjectsComponent }
 ])
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewChecked, OnInit {
     constructor(private router: Router) { }
+
+    ngAfterViewChecked() {
+        // viewChild is set after the view has been initialized
+        componentHandler.upgradeAllRegistered();
+    }
 
     ngOnInit() {
         this.router.navigate(['/projects']);
