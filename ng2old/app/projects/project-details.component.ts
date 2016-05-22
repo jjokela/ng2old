@@ -11,7 +11,7 @@ declare var componentHandler: any;
 @Component({
     selector: 'app-project',
     templateUrl: 'app/projects/project-details.component.html',
-    styles: [],
+    styleUrls: ['app/projects/project-details.component.css'],
     directives: [TaskListProjectComponent]
 })
 export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="app\app.component.css" />
     <Content Include="app\app.component.html" />
+    <Content Include="app\projects\project-details.component.css" />
     <Content Include="app\projects\project-details.component.html" />
     <Content Include="app\projects\project-list.component.css" />
     <Content Include="app\projects\project-list.component.html" />
@@ -80,6 +81,7 @@
     <Content Include="app\shared\spinner\spinner.component.html" />
     <Content Include="app\shared\toast\toast.component.css" />
     <Content Include="app\shared\toast\toast.component.html" />
+    <Content Include="app\tasks\task-details.component.css" />
     <Content Include="app\tasks\task-details.component.html" />
     <Content Include="app\tasks\task-list-project.component.css" />
     <Content Include="app\tasks\task-list-project.component.html" />
@@ -88,7 +90,6 @@
     <Content Include="assets\animate.css" />
     <Content Include="assets\app.css" />
     <Content Include="assets\material.deep_orange-pink.min.css" />
-    <Content Include="assets\material.min.js" />
     <Content Include="assets\sprite-av-white.css" />
     <Content Include="assets\sprite-av-white.png" />
     <Content Include="package.json" />

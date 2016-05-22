@@ -10,7 +10,7 @@ declare var componentHandler: any;
 @Component({
     selector: 'app-task',
     templateUrl: 'app/tasks/task-details.component.html',
-    styles: []
+    styleUrls: ['app/tasks/task-details.component.css']
 })
 export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {
 
