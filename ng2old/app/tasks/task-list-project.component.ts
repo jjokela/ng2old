@@ -2,7 +2,7 @@
 import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { Task } from './task.model';
+import { Task, TaskState } from './task.model';
 import { TaskService } from './task.service';
 import { SortTasksPipe } from './sort-tasks.pipe';
 import { Project } from '../projects/project.model';
@@ -19,7 +19,6 @@ import { Project } from '../projects/project.model';
 
 export class TaskListProjectComponent implements OnActivate, OnInit {
     tasks: Task[];
-
     @Input() project: Project;
 
     constructor(
@@ -52,8 +51,22 @@ export class TaskListProjectComponent implements OnActivate, OnInit {
             );
     }
 
-    gotoDetail(task: Task) {
+    gotoDetail(task: Task): void {
         let link = ['/tasks', task.id, { projectId: this.project.id }];
         this.router.navigate(link);
+    }
+
+    setTaskStateIcon(task: Task): string {
+        let taskState = task.taskState;
+        let icon = '';
+
+        if (taskState == TaskState.Done) {
+            icon = 'mood';
+        } else if (taskState == TaskState.InProgress) {
+            icon = 'schedule';
+        } else if (taskState == TaskState.New) {
+            icon = 'fiber_new';
+        }
+        return icon;
     }
 }

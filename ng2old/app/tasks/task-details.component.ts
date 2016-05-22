@@ -1,16 +1,18 @@
 ﻿import { Component, Input, AfterViewChecked, OnInit } from '@angular/core';
 import { CanDeactivate, OnActivate, Router, RouteSegment } from '@angular/router';
 
-import { EntityService, ModalService, ToastService } from '../shared/shared';
+import { EntityService, EnumKeysPipe, ModalService, ToastService } from '../shared/shared';
 
-import { Task } from './task.model';
+import { Task, TaskState, TaskStateConverter } from './task.model';
 import { TaskService } from './task.service';
 declare var componentHandler: any;
 
 @Component({
     selector: 'app-task',
     templateUrl: 'app/tasks/task-details.component.html',
-    styleUrls: ['app/tasks/task-details.component.css']
+    styleUrls: ['app/tasks/task-details.component.css'],
+    pipes: [EnumKeysPipe],
+    providers: [TaskStateConverter]
 })
 export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {
 
@@ -18,17 +20,24 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
     projectId: number;
     @Input() task: Task;
 
+    taskStates: any;
+
     constructor(
         private entityService: EntityService,
         private modalService: ModalService,
         private router: Router,
         private service: TaskService,
-        private toastService: ToastService
+        private toastService: ToastService,
+        private taskStateConverter: TaskStateConverter
     ) { }
 
     ngAfterViewChecked() {
         // viewChild is set after the view has been initialized
         componentHandler.upgradeAllRegistered();
+    }
+
+    convert(taskState: TaskState) {
+        return this.taskStateConverter.getTaskDisplayValue(taskState);
     }
 
     routerCanDeactivate(): any {
@@ -38,6 +47,9 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
     }
 
     routerOnActivate(curr: RouteSegment) {
+
+        this.taskStates = TaskState;
+
         let id = +curr.getParam('id');
         this.projectId = +curr.getParam('projectId');
         console.log('projid: ' + this.projectId);
