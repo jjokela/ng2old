@@ -54,7 +54,7 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
         this.projectId = +curr.getParam('projectId');
         console.log('projid: ' + this.projectId);
         if (this.isAddMode(id)) {
-            this.task = <Task>{ name: '', description: '', projectId: this.projectId };
+            this.task = <Task>{ name: '', description: '', projectId: this.projectId, taskState: TaskState.New };
             this.editTask = this.entityService.clone(this.task);
             return;
         }

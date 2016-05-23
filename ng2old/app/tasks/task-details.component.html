@@ -10,9 +10,13 @@
             <textarea type="text" id="sidetext" class="mdl-textfield__input" [(ngModel)]="editTask.description"></textarea>
         </div>
 
-        <select [(ngModel)]="editTask.taskState">
-            <option *ngFor="let state of taskStates | enumKeys" [value]="state.key" >{{convert(state.key)}}</option>
-        </select>  
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label class="mdl-textfield__label" for="state">State</label>
+            <select id="state" class="mdl-selectfield mdl-textfield__input" [(ngModel)]="editTask.taskState">
+                <option value="" disabled selected>Choose your option</option>
+                <option *ngFor="let state of taskStates | enumKeys" [value]="state.key">{{ convert(state.key) }}</option>
+            </select>
+        </div>
 
         <div class="buttons">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="save()">
