@@ -4,8 +4,8 @@
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "docker-build": "docker build -t ng2-demo .",
-    "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-demo",
+    "docker-build": "docker build -t angular2-demo .",
+    "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 angular2-demo",
     "e2e": "tsc && concurrently \"http-server\" \"protractor protractor.config.js",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
@@ -34,7 +34,6 @@
     "angular2-in-memory-web-api": "0.0.7",
     "bootstrap": "^3.3.6",
     "es6-shim": "^0.35.0",
-    "ng2-material": "^0.3.8",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.6",
     "systemjs": "0.19.27",
