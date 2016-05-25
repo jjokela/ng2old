@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -12,7 +12,12 @@
   },
   "exclude": [
     "node_modules",
+    "node_modules/typescript/lib/lib.es6.d.ts",
+    "node_modules/typescript/lib/lib.core.es6.d.ts",
     "typings/main",
-    "typings/main.d.ts"
+    "typings/main.d.ts",
+    "typings/browser",
+    "typings/browser.d.ts",
+    "typings/es6-shim/es6-shim.d.ts"
   ]
 }

@@ -43,7 +43,7 @@ export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, Ca
 
         if (this.isAddMode(id)) {
             this.project = <Project>{ name: '', description: '' };
-            this.editProject = this.entityService.clone(this.project);
+            this.editProject = <Project>this.entityService.clone(this.project);
             return;
         }
 
@@ -52,7 +52,7 @@ export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, Ca
     }
 
     cancel(showToast = true) {
-        this.editProject = this.entityService.clone(this.project);
+        this.editProject = <Project>this.entityService.clone(this.project);
         if (showToast) {
             this.toastService.activate(`Cancelled changes to ${this.project.name}`);
         }
@@ -105,7 +105,7 @@ export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, Ca
     private setEditProject(project: Project) {
         if (project) {
             this.project = project;
-            this.editProject = this.entityService.clone(this.project);
+            this.editProject = <Project>this.entityService.clone(this.project);
         }
     }
 }

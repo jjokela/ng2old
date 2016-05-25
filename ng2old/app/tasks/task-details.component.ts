@@ -55,7 +55,7 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
         console.log('projid: ' + this.projectId);
         if (this.isAddMode(id)) {
             this.task = <Task>{ name: '', description: '', projectId: this.projectId, taskState: TaskState.New };
-            this.editTask = this.entityService.clone(this.task);
+            this.editTask = <Task>this.entityService.clone(this.task);
             return;
         }
 
@@ -64,7 +64,7 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
     }
 
     cancel(showToast = true) {
-        this.editTask = this.entityService.clone(this.task);
+        this.editTask = <Task>this.entityService.clone(this.task);
         if (showToast) {
             this.toastService.activate(`Cancelled changes to ${this.task.name}`);
         }
@@ -130,7 +130,7 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
     private setEditTask(task: Task) {
         if (task) {
             this.task = task;
-            this.editTask = this.entityService.clone(this.task);
+            this.editTask = <Task>this.entityService.clone(this.task);
         }
     }
 }
