@@ -12,12 +12,7 @@
   },
   "exclude": [
     "node_modules",
-    "node_modules/typescript/lib/lib.es6.d.ts",
-    "node_modules/typescript/lib/lib.core.es6.d.ts",
-    "typings/main",
-    "typings/main.d.ts",
-    "typings/browser",
-    "typings/browser.d.ts",
-    "typings/es6-shim/es6-shim.d.ts"
+    ".vscode",
+    "lib"
   ]
 }
