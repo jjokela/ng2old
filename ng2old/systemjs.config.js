@@ -11,7 +11,7 @@
         'api': 'api',
         'rxjs': 'node_modules/rxjs',
         'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-        '@angular': 'libnode_modules/@angular',
+        '@angular': 'node_modules/@angular',
         '@angular2-material': 'node_modules/@angular2-material'
     };
 
