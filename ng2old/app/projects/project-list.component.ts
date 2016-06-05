@@ -12,12 +12,8 @@ import { SortProjectsPipe } from './sort-projects.pipe';
     selector: 'app-projects',
     templateUrl: 'app/projects/project-list.component.html',
     styleUrls: ['app/projects/project-list.component.css'],
-    directives: [
-        FilterTextComponent,
-        ROUTER_DIRECTIVES
-    ],
-    pipes: [SortProjectsPipe],
-    providers: [FilterService]
+    directives: [FilterTextComponent],
+    pipes: [SortProjectsPipe]
 })
 
 export class ProjectListComponent implements OnActivate {

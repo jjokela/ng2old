@@ -3,12 +3,12 @@ import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
 import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { InMemoryBackendConfig, InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api/core';
 
-import { EntityService, ExceptionService, FilterService, FilterTextComponent, ModalComponent, ModalService,
+import { EntityService, ExceptionService, ModalComponent, ModalService,
     SpinnerComponent, SpinnerService, ToastComponent, ToastService } from './shared/shared';
 
 import { InMemoryProjectService } from '../api/in-memory-project.service';
-import { ProjectsComponent, ProjectService } from './projects/projects';
-import { TasksComponent, TaskService } from './tasks/tasks';
+import { ProjectsComponent } from './projects/projects';
+import { TasksComponent } from './tasks/tasks';
 declare var componentHandler: any;
 
 @Component({
@@ -17,7 +17,6 @@ declare var componentHandler: any;
     styleUrls: ['app/app.component.css'],
     directives: [
         ROUTER_DIRECTIVES,
-        FilterTextComponent,
         ModalComponent,
         ProjectsComponent,       
         ToastComponent,
@@ -27,12 +26,9 @@ declare var componentHandler: any;
         HTTP_PROVIDERS,
         ROUTER_PROVIDERS,
         EntityService,
-        ExceptionService,
-        FilterService,       
+        ExceptionService,      
         ModalService,
-        ProjectService,       
         SpinnerService,
-        TaskService,
         ToastService,        
         provide(XHRBackend, { useClass: InMemoryBackendService }),
         provide(SEED_DATA, { useClass: InMemoryProjectService }),

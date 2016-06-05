@@ -5,13 +5,13 @@ import { TaskDetailsComponent } from './task-details.component';
 import { TaskListComponent } from './task-list.component';
 import { TaskService } from './task.service';
 
-
 @Component({
     selector: 'app-tasks-root',
     template: `
         <router-outlet></router-outlet>
     `,
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES],
+    providers: [TaskService]
 })
 @Routes([
     { path: '/', component: TaskListComponent },

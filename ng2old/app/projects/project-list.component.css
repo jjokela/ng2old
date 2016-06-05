@@ -18,10 +18,6 @@
     margin: 0 15px 0 0;
 }
 
-.project-list li p, .project-list li a {
-    /*font: 200 12px/1.5 Georgia, Times New Roman, serif;*/
-}
-
 .project-list li {
     padding: 10px;
     overflow: auto;
