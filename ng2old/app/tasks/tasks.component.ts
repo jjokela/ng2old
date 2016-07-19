@@ -2,7 +2,7 @@
 import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { TaskDetailsComponent } from './task-details.component';
-import { TaskListComponent } from './task-list.component';
+//import { TaskListComponent } from './task-list.component';
 import { TaskService } from './task.service';
 
 
@@ -14,7 +14,7 @@ import { TaskService } from './task.service';
     directives: [ROUTER_DIRECTIVES]
 })
 @Routes([
-    { path: '/', component: TaskListComponent },
+    //{ path: '/', component: TaskListComponent },
     { path: '/:id', component: TaskDetailsComponent }
 ])
 export class TasksComponent { }
