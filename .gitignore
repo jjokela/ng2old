@@ -166,3 +166,4 @@ $RECYCLE.BIN/
 ## Ignore WebStorm project files
 .idea
 
+ng2old/.vscode/launch.json

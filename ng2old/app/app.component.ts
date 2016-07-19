@@ -1,7 +1,7 @@
 import { Component, AfterViewChecked, OnInit, provide } from '@angular/core';
 import { HTTP_PROVIDERS, XHRBackend } from '@angular/http';
 import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
-import { InMemoryBackendConfig, InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api/core';
+import { InMemoryBackendConfig, InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api/index';
 
 import { EntityService, ExceptionService, ModalComponent, ModalService,
     SpinnerComponent, SpinnerService, ToastComponent, ToastService } from './shared/shared';
