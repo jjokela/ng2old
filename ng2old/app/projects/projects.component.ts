@@ -1,6 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
-
+import { ROUTER_DIRECTIVES }    from '@angular/router';
 import { ProjectDetailsComponent } from './project-details.component';
 import { ProjectListComponent } from './project-list.component';
 import { ProjectService } from './project.service';
@@ -16,8 +15,4 @@ import { FilterService} from '../shared/shared';
     directives: [ROUTER_DIRECTIVES],
     providers: [FilterService, ProjectService, TaskService]
 })
-@Routes([
-        { path: '/', component: ProjectListComponent },
-        { path: '/:id', component: ProjectDetailsComponent }
-])
 export class ProjectsComponent { }

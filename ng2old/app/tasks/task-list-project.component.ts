@@ -1,5 +1,5 @@
 ﻿import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { Task, TaskState } from './task.model';
@@ -17,7 +17,7 @@ import { Project } from '../projects/project.model';
     pipes: [SortTasksPipe]
 })
 
-export class TaskListProjectComponent implements OnActivate, OnInit {
+export class TaskListProjectComponent implements OnInit {
     tasks: Task[];
     @Input() project: Project;
 
@@ -25,10 +25,6 @@ export class TaskListProjectComponent implements OnActivate, OnInit {
         private taskService: TaskService,
         private router: Router
     ) { }
-
-    routerOnActivate() {
-        console.log(`routerOnActivate`);
-    }
 
     ngOnInit() {
         console.log(`onInit`);

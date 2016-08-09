@@ -4049,12 +4049,14 @@
   <ItemGroup>
     <TypeScriptCompile Include="api\in-memory-project.service.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.routes.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\projects\project-details.component.ts" />
     <TypeScriptCompile Include="app\projects\project-list.component.ts" />
     <TypeScriptCompile Include="app\projects\project.model.ts" />
     <TypeScriptCompile Include="app\projects\project.service.ts" />
     <TypeScriptCompile Include="app\projects\projects.component.ts" />
+    <TypeScriptCompile Include="app\projects\projects.routes.ts" />
     <TypeScriptCompile Include="app\projects\projects.ts" />
     <TypeScriptCompile Include="app\projects\sort-projects.pipe.ts" />
     <TypeScriptCompile Include="app\shared\entity.service.ts" />
@@ -4080,6 +4082,7 @@
     <TypeScriptCompile Include="app\tasks\task.model.ts" />
     <TypeScriptCompile Include="app\tasks\tasks.component.ts" />
     <TypeScriptCompile Include="app\tasks\task.service.ts" />
+    <TypeScriptCompile Include="app\tasks\tasks.routes.ts" />
     <TypeScriptCompile Include="app\tasks\tasks.ts" />
     <TypeScriptCompile Include="lib\%40angular\common\esm\index.d.ts" />
     <TypeScriptCompile Include="lib\%40angular\common\esm\src\common_directives.d.ts" />

@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { FilterService, FilterTextComponent} from '../shared/shared';
@@ -16,7 +16,7 @@ import { SortProjectsPipe } from './sort-projects.pipe';
     pipes: [SortProjectsPipe]
 })
 
-export class ProjectListComponent implements OnActivate {
+export class ProjectListComponent implements OnInit {
     projects: Project[];
     filteredProjects = this.projects;
 
@@ -28,7 +28,7 @@ export class ProjectListComponent implements OnActivate {
         private router: Router
     ) { }
 
-    routerOnActivate() {
+    ngOnInit() {
         this.getProjects();
     }
 

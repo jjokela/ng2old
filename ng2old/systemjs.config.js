@@ -9,16 +9,10 @@
     var map = {
         'app': 'app', // 'dist',
         'api': 'api',
-<<<<<<< HEAD
         'rxjs': 'node_modules/rxjs',
         'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
         '@angular': 'node_modules/@angular',
         '@angular2-material': 'node_modules/@angular2-material'
-=======
-        'rxjs': 'lib/rxjs',
-        'angular2-in-memory-web-api': 'lib/angular2-in-memory-web-api',
-        '@angular': 'lib/@angular'
->>>>>>> origin/master
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
@@ -46,19 +40,6 @@
     packageNames.forEach(function (pkgName) {
         packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
     });
-
-    // Angular Material 2 Packages to load. NOTE: it is still in too early phase unfortunately...
-    //var _materialPackages = [
-    //  'core', 'toolbar', 'button', 'card', 'checkbox', 'icon', 'input', 'list', 'progress-bar',
-    //  'progress-circle', 'radio', 'sidenav'
-    //];
-
-    //_materialPackages.forEach(function (item) {
-    //    // All Material 2 components are prefixed with  @angular2-material and use
-    //    // the components name as entry point.
-    //    packages['@angular2-material/' + item] = { main: item };
-    //});
-
 
     var config = {
         map: map,

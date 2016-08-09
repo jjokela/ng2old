@@ -1,5 +1,5 @@
-﻿import { Component, Input, AfterViewChecked, OnInit } from '@angular/core';
-import { CanDeactivate, OnActivate, Router, RouteSegment } from '@angular/router';
+﻿import { Component, Input, AfterViewChecked, OnInit, OnDestroy } from '@angular/core';
+import { CanDeactivate, Router, ActivatedRoute } from '@angular/router';
 
 import { EntityService, EnumKeysPipe, ModalService, ToastService } from '../shared/shared';
 
@@ -14,10 +14,12 @@ declare var componentHandler: any;
     pipes: [EnumKeysPipe],
     providers: [TaskStateConverter]
 })
-export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {
+export class TaskDetailsComponent implements AfterViewChecked, OnInit, OnDestroy {
 
     editTask: Task = <Task>{};
     projectId: number;
+    private sub: any;
+
     @Input() task: Task;
 
     taskStates: any;
@@ -25,6 +27,7 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
     constructor(
         private entityService: EntityService,
         private modalService: ModalService,
+        private route: ActivatedRoute,
         private router: Router,
         private service: TaskService,
         private toastService: ToastService,
@@ -40,27 +43,34 @@ export class TaskDetailsComponent implements AfterViewChecked, OnActivate, CanDe
         return this.taskStateConverter.getTaskDisplayValue(taskState);
     }
 
-    routerCanDeactivate(): any {
-        return !this.task ||
-            !this.isDirty() ||
-            this.modalService.activate();
-    }
+    //routerCanDeactivate(): any {
+    //    return !this.task ||
+    //        !this.isDirty() ||
+    //        this.modalService.activate();
+    //}
 
-    routerOnActivate(curr: RouteSegment) {
+    ngOnInit() {
 
         this.taskStates = TaskState;
 
-        let id = +curr.getParam('id');
-        this.projectId = +curr.getParam('projectId');
-        console.log('projid: ' + this.projectId);
-        if (this.isAddMode(id)) {
-            this.task = <Task>{ name: '', description: '', projectId: this.projectId, taskState: TaskState.New };
-            this.editTask = <Task>this.entityService.clone(this.task);
-            return;
-        }
+        this.sub = this.route.params.subscribe(params => {
+            let id = +params['id'];
+            this.projectId = +params['projectId'];
 
-        this.service.getTask(id)
-            .subscribe((task: Task) => this.setEditTask(task));
+            console.log('projid: ' + this.projectId);
+            if (this.isAddMode(id)) {
+                this.task = <Task>{ name: '', description: '', projectId: this.projectId, taskState: TaskState.New };
+                this.editTask = <Task>this.entityService.clone(this.task);
+                return;
+            }
+
+            this.service.getTask(id)
+                .subscribe((task: Task) => this.setEditTask(task));
+        });
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
     cancel(showToast = true) {

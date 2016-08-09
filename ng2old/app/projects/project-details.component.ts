@@ -1,6 +1,5 @@
-﻿import { Component, Input, AfterViewChecked, OnInit, ViewChild } from '@angular/core';
-import { CanDeactivate, OnActivate, Router, RouteSegment } from '@angular/router';
-
+﻿import { Component, Input, AfterViewChecked, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { CanDeactivate, Router, ActivatedRoute } from '@angular/router';
 import { EntityService, ModalService, ToastService } from '../shared/shared';
 
 import { Project } from './project.model';
@@ -14,14 +13,17 @@ declare var componentHandler: any;
     styleUrls: ['app/projects/project-details.component.css'],
     directives: [TaskListProjectComponent]
 })
-export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, CanDeactivate {
+export class ProjectDetailsComponent implements AfterViewChecked, OnInit, OnDestroy {
 
     editProject: Project = <Project>{};
+    private sub: any;
+
     @Input() project: Project;
 
     constructor(
         private entityService: EntityService,
         private modalService: ModalService,
+        private route: ActivatedRoute,
         private router: Router,
         private service: ProjectService,
         private toastService: ToastService
@@ -32,23 +34,28 @@ export class ProjectDetailsComponent implements AfterViewChecked, OnActivate, Ca
       componentHandler.upgradeAllRegistered();
     }
 
-    routerCanDeactivate(): any {
-        return !this.project ||
-            !this.isDirty() ||
-            this.modalService.activate();
+    //routerCanDeactivate(): any {
+    //    return !this.project ||
+    //        !this.isDirty() ||
+    //        this.modalService.activate();
+    //}
+
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            let id = +params['id']; // (+) converts string 'id' to a number
+            if (this.isAddMode(id)) {
+                this.project = <Project>{ name: '', description: '' };
+                this.editProject = <Project>this.entityService.clone(this.project);
+                return;
+            }
+
+            this.service.getProject(id)
+                .subscribe((project: Project) => this.setEditProject(project));
+        });
     }
 
-    routerOnActivate(curr: RouteSegment) {
-        let id = +curr.getParam('id');
-
-        if (this.isAddMode(id)) {
-            this.project = <Project>{ name: '', description: '' };
-            this.editProject = <Project>this.entityService.clone(this.project);
-            return;
-        }
-
-        this.service.getProject(id)
-            .subscribe((project: Project) => this.setEditProject(project));
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
     cancel(showToast = true) {

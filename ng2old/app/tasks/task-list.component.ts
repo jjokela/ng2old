@@ -1,5 +1,5 @@
 ﻿import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { FilterService, FilterTextComponent} from '../shared/shared';
@@ -21,7 +21,7 @@ import { Project } from '../projects/project.model';
     providers: [FilterService]
 })
 
-export class TaskListComponent implements OnActivate, OnInit {
+export class TaskListComponent implements OnInit {
     tasks: Task[];
     filteredTasks = this.tasks;
 
@@ -33,10 +33,6 @@ export class TaskListComponent implements OnActivate, OnInit {
         private taskService: TaskService,
         private router: Router
     ) { }
-
-    routerOnActivate() {
-        console.log(`routerOnActivate`);
-    }
 
     ngOnInit() {
         console.log(`onInit`);
